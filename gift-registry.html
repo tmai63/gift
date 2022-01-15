@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
+    />
+    <meta name="description" content="Gift Checklist" />
+    <title>Gift checklist</title>
+  </head>
+
+  <style>
+    body {
+      font-family: "Helvetica Neue", Helvetica, sans-serif;
+    }
+  </style>
+
+  <body>
+    <section class="bnr">
+      <h1 class="page-heading">Gift Registry</h1>
+    </section>
+
+    <section class="login">
+      <div class="loginpage">
+        <label> User name:</label> <input id="username_field" />
+        <br />
+        <label> Password:</label> <input id="password_field" />
+        <br />
+        <button type="button" id="makeList">Make List</button>
+      </div>
+    </section>
+
+    <section classs="theList">
+      <div class="list">
+        <h2 class="list-heading">Wish List</h2>
+
+        <input id="list_entry" />
+        <button class="add" type="button">Add</button>
+
+        <ul class="the-list">
+          <!--- to add list items to, empty now --->
+          <li>pants</li>
+          <ul></ul>
+          <li>shirt</li>
+        </ul>
+      </div>
+    </section>
+  </body>
+</html>
+
+<script>
+  // Elements
+  const btnMakeList = document.querySelector("#makeList");
+  const usernameField = document.querySelector("#username_field");
+  const loginpage = document.querySelector(".loginpage");
+
+  // Wishlist Item Object
+  const item1 = {
+    name: "shirt",
+    link: "https://www.amazon.ca/shirt",
+    quantity: 1,
+    comments: "Medium, in black",
+  };
+  const item2 = {
+    name: "Pants",
+    link: "https://www.amazon.ca/pants",
+    quantity: 6,
+    comments: "Small",
+  };
+
+  // User object
+  const user1 = {
+    name: "John Smith",
+    username: "jsmith",
+    eventDate: "January 1st, 2022",
+    listArray: [item1, item2],
+  };
+  const user2 = {
+    name: "Tyler One",
+    username: "tone",
+    eventDate: "January 5th, 2022",
+    listArray: [item1],
+  };
+
+  let accounts = [user1, user2];
+
+  const createNewAccount = function () {};
+
+  let currentAccount;
+
+  const checkUsername = function () {
+    accounts.forEach(function (acc) {
+      if (acc.username === usernameField.value) {
+        // If valid username, change current account
+        currentAccount = acc;
+      } else {
+        // If invalid username, call create new account object
+        createNewAccount();
+        console.log("False");
+      }
+    });
+  };
+
+  btnMakeList.addEventListener("click", function () {
+    console.log("clicked");
+    loginpage.hidden = true;
+    checkUsername();
+    console.log(currentAccount.name);
+    // Check if username is available, if not, make new username entry
+    // 			If exists, login to current entry
+  });
+</script>
