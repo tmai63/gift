@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+    <meta name="description" content="Gift Checklist">
+    <title>Gift checklist</title>
+  </head>
+  
+ <style>
+  body {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+  }
+   
+  ul {
+  	list-style-type: none;
+   } 
+   
+   
+ .dropdown-content {
+ 	display: block;
+ }
+   
+ .dropdown-list:hover .dropdown-content{
+ 	display: block;
+ }
+   
+
+</style>
+  
+  <body>
+    <section class="bnr">
+      <h1 class="page-heading"> Gift Registry </h1>
+    </section>  
+    
+    <section class="login">
+      <div class="loginpage">
+        <label> User name:</label> <input id="username_field"/>
+        <br>
+        <label> Password:</label> <input id="password_field"/>
+        <br>
+        <button type="button" id="makeList">Make List</button>
+      </div>
+    </section>
+    
+    <section class="theList">
+      <div class="list">
+
+        <h2 class="list-heading"> Wish List </h2>
+
+        <label> Item Name: </label> <input id="list_entry"/>
+        <br>
+
+        <form class="input list fields">
+          <div>
+            <label for="url"> Link: </label>
+ 	         	<input type="url" name="url" class="url">
+          </div>
+          <div>
+            <label for="quantity"> Quantity: </label>
+ 	         	<input type="number" name="quantity" class="quantity">
+          </div>
+          <div>
+            <label for="comments"> Comments: </label>
+ 	         	<input type="text" name="comments" class="comments">
+          </div>
+          <div>
+          	<button class="addItemButton" type="button">Add</button>
+          </div>
+        </form>
+        
+        
+        	<ul class="dropdown-list"> 
+            
+          	<li>
+              <input type= "checkbox"> <a href="https://www.amazon.ca/pants">Pants</a>
+            </li>
+                <ul class="dropdown-content"> 
+                  <li>1</li>
+                  <li>Medium, in black</li>
+                </ul>
+            
+						<li>
+              <input type= "checkbox"> <a href="https://www.amazon.ca/shirt">Shirt</a>
+            </li>
+                <ul class="dropdown-content"> 
+                  <li>6</li>
+                  <li>Small</li>
+                </ul>
+            
+          </ul>
+             
+          
+
+
+      </div> 
+    </section>  
+    
+  </body>
+ 
+ </html>
+    
+<script>
+  // ------------ELEMENTS------------
+  // Buttons
+  const btnMakeList = document.querySelector('#makeList');
+  const btnAddItemButton = document.querySelector('.addItemButton');  
+  //const btnSubmitList = document.querySelector(--------SUBMIT BUTTON CLASS/ID HERE------)
+  
+  // Input Fields
+  const usernameField = document.querySelector('#username_field');
+	const passwordField = document.querySelector('#password_field');
+  
+	const itemNameField = document.querySelector('#list_entry');
+	const itemLinkField = document.querySelector('.url');  
+	const itemQuantityField = document.querySelector('.quantity');
+	const itemCommentsField = document.querySelector('.comments');  
+  
+  // Page Sections
+  const loginpage = document.querySelector('.loginpage');
+  const listPage = document.querySelector('.thelist');
+  
+  
+  // Wishlist Item Object
+  const item1 = {
+    name: "shirt",
+    link: "https://www.amazon.ca/shirt",
+    quantity: 1,
+    comments: "Medium, in black",
+    checked: false,
+  }
+  const item2 = {
+    name: "Pants",
+    link: "https://www.amazon.ca/pants",
+    quantity: 6,
+    comments: "Small",
+    checked: false,
+  }
+  
+  // User object
+  class User {
+		constructor(username, password) {
+      this.name = username;
+      this.password = password;
+  	}
+  }
+  
+  class Item {
+    constructor(itemName, itemLink, itemQuantity, itemComments) {
+      this.itemName = itemName;
+      this.itemLink = itemLink;
+      this.itemQuantity = itemQuantity;
+      this.itemComments = itemComments;
+      this.checked = false;
+    }
+  }
+    
+	const user1 = {
+    name: "John Smith",
+    username: "jsmith",
+    password: 1111,
+    eventDate: "January 1st, 2022",
+    listArray: [item1, item2],
+  };
+  
+  const user2 = {
+    name: "Tyler One",
+    username: "tone",
+    password: 2222,
+    eventDate: "January 5th, 2022",
+    listArray: [item1],
+  };
+  
+  let accounts = [user1, user2];
+  let currentAccount;
+  
+  // ------------FUNCTIONS------------
+  const createNewAccount = function() {
+    const user = new User(usernameField.value, Number(passwordField.value));
+    currentAccount = user;
+  };
+
+	const checkUsername = function() {
+    accounts.forEach(function(acc) {
+     if(acc.username ===  usernameField.value && acc.password === Number(passwordField.value)) {
+       // If valid username, change current account
+			 currentAccount = acc;
+       window.alert(`Just logged in as ${currentAccount.name}`);
+   		}
+    });
+     if (currentAccount == null) {
+       // If invalid username, call create new account object
+       window.alert('User not found, creating new user');
+       createNewAccount();
+   	}
+ };
+  
+  //listPage.hidden = true;
+  
+  btnMakeList.addEventListener('click', function() {
+    console.log("clicked");
+    //Clear the current account
+    currentAccount = null;
+    //loginpage.hidden = true; 
+    listPage.hidden = false;
+    checkUsername();
+  });
+  
+  
+  btnAddItemButton.addEventListener('click', function() {
+    const item = new Item(itemNameField.value, itemLinkField.value, Number(itemQuantityField.value), itemCommentsField.value)
+    currentAccount.listArray.push(item);
+  });
+
+ /* 
+  btnSubmitList.addEventListener('click', function() {
+    accounts.push(currentAccount);
+    currentAccount = null;
+  });
+  */
+  
+  
+    
+ 
+</script>
