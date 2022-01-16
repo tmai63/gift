@@ -8,6 +8,9 @@
             shrink-to-fit=no, viewport-fit=cover">
     <meta name="description" content="Gift Checklist">
     <title>Gift checklist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 </head>
 
 
@@ -21,7 +24,7 @@
     h2 {
         text-decoration: slateblue;
         color: slateblue;
-        font-size: 20px;
+      	font-size: 20px;
     }
 
     h3 {
@@ -29,7 +32,8 @@
     }
 
     body {
-        font-family: "Helvetica Neue", Helvetica, sans-serif;
+      	font-family: "Arimo", "Helvetica", sans-serif;
+      	background-color: lightblue;
     }
 
 
@@ -47,11 +51,10 @@
     .the-list .box {
         width: 5em;
     }
+  
 </style>
 
 <body>
-
-
 
     <section class="bnr">
         <h1 class="page-heading"> Gift Registry </h1>
@@ -59,9 +62,11 @@
 
     <section class="login">
         <div class="loginpage">
-            <label> User name:</label> <input required id="username_field" />
+            <label for="username_field"> User name: </label> 
+          	<input type="text" name="key_field" id="username_field" required>
             <br>
-            <label> Password:</label> <input required id="password_field" />
+            <label for="key_field"> Password:</label> 
+          	<input type="text" name="key_field" id="key_field" required>
             <br>
             <button type="button" id="login">Login</button>
         </div>
@@ -73,7 +78,7 @@
             <h2 class="list-heading"> Wish List </h2>
 
             <h3>
-                <div>
+                <div class="recipientName">
                     <label for="fullname"> Recipient Name: </label>
                     <input type="text" name="fullname" class="fullname">
                 </div>
@@ -120,8 +125,8 @@
 
                 <div class="row">
                     <div class="parent">
-                        <input unchecked type="checkbox" class="checked"> <a href="https://www.amazon.ca/shirt">Shirt
-                        </a>
+                        <input unchecked type="checkbox" class="checked"> <a
+                            href="https://www.amazon.ca/shirt">Shirt </a>
                         <div class="attribute">
                             6
                         </div>
@@ -242,7 +247,8 @@
                 }
                 usernameField.value = passwordField.value = '';
                 // ####################UNCOMMENT THIS FOR HIDING CODE########################
-                loginPage.hidden = true;
+                loginPage.hidden = true; 
+        				listPage.hidden = false;
                 return true;
             } else if (acc.username === usernameField.value && acc.password != Number(passwordField.value)) {
                 window.alert(`Wrong password`);
@@ -254,6 +260,7 @@
                 usernameField.value = passwordField.value = '';
                 // ####################UNCOMMENT THIS FOR HIDING CODE########################
                 loginPage.hidden = true;
+								listPage.hidden = false;
             }
         });
     };
@@ -294,9 +301,11 @@
         } else if (link.indexOf("http://www.") == 0 || link.indexOf("https://www.") == 0) {
             return link;
         }
-        else {
-            const urlPrefix = "http://www.";
+        else if (link.indexOf("www.") == 0) {
+            const urlPrefix = "http://";
             return urlPrefix.concat(link);
+        } else {
+            return link;
         }
     }
 
@@ -339,15 +348,14 @@
     btnlogin.addEventListener('click', function () {
         //Clear the current account
         currentAccount = null;
-        // ####################UNCOMMENT THIS FOR HIDING CODE########################
-        listPage.hidden = false;
         checkUsername();
         checkFirstTimeLogin();
     });
 
 
     btnAddItemButton.addEventListener('click', function () {
-        const item = new Item(itemNameField.value, itemLinkField.value, Number(itemQuantityField.value), itemCommentsField.value)
+      	
+        const item = new Item(itemNameField.value, validateURL(itemLinkField.value), Number(itemQuantityField.value), itemCommentsField.value)
         itemNameField.value = itemLinkField.value = itemQuantityField.value = itemCommentsField.value = '';
         currentAccount.listArray.push(item);
         updateUI();
