@@ -15,3 +15,5 @@ Christmas time is usually a time for gatherings, festivities, and joyfulness
   Wonderful doners can access credentials from their local charitable organization and then log into the site, see what was on the Smith's list this year, and check off items that they pledge to donate.
   
   The holiday are a poignant time of year. It's when the most people are thinking of gift giving, and the time of year when families in need could use gifts the most. 
+
+![image](https://user-images.githubusercontent.com/65327591/149658300-b7a51fe2-13d8-4c6c-b74f-19b26a3f5efc.png)
