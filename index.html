@@ -12,38 +12,39 @@
   
   
  <style>
+   h1 {
+   	text-decoration: slateblue underline;
+    color: slateblue;
+   }
+   
+   h2 {
+   	text-decoration: slateblue underline;
+    color: slateblue;
+   }
+   
+   h3 {
+   	font-weight: bold;
+   }
+   
   body {
     font-family: "Helvetica Neue", Helvetica, sans-serif;
   }
    
-  ul {
-  	list-style-type: none;
-    display: flex;
-  }
- 
-  .container {
-	  	flex-direction: column;
-  }
+
+.the-list .row .parent {
+	display: flex;
+  gap: 30px;
+}
    
-  .item-list {
-		 flex-direction: row;
-
-  }
    
-  .parent {
-  	flex-direction: column;
-
-  }
-
-  .list-content {
-  	flex-direction: row;
-  }
-
-  li {
-  	
-  }
+.the-list .parent {
+	justify-content: flex-start;
+}
    
-
+   
+.the-list .box {
+	width: 5em;
+}
   
    
 
@@ -67,15 +68,24 @@
       </div>
     </section>
     
-    <section class="theList">
+    <section class="the-list">
       <div class="list">
 
         <h2 class="list-heading"> Wish List </h2>
 
-        <label> Item Name: </label> <input id="list_entry"/>
+        <h3>
+          <div>
+            <label for="fullname"> Recipient Name: </label>
+ 	         	<input type="text" name="fullname" class="fullname">
+          </div>
         <br>
-
+        </h3>
+        
         <form class="input list fields">
+          <div>
+            <label for="list_entry"> Item Name: </label>
+ 	         	<input type="text" name="list_entry" id="list_entry">
+          </div>
           <div>
             <label for="url"> Link: </label>
  	         	<input type="url" name="url" class="url">
@@ -95,36 +105,39 @@
         
 
 
-        <div class="container">
-        	<ul class="item-list"> 
-            
-          	<li class="parent">
-              <input type= "checkbox" class="checked"> <a href="https://www.amazon.ca/pants">Pants</a>
-            </li>
-                <ul class="list-content"> 
-                  <li>1</li>
-                  <li>Medium, in black</li>
-                </ul>
-            
-            
-						<li class="parent">
-              <input type= "checkbox" class="checked"><a href="https://www.amazon.ca/shirt">Shirt</a>
-            </li>
-                <ul class="list-content"> 
-                  <li>6</li>
-                  <li>Small</li>
-                </ul>
-            
-          </ul>
+    <div class="container item-List">
+        <div class="row">
+            <div class="parent">
+                <input unchecked type= "checkbox" class="checked"> <a href="https://www.amazon.ca/pants">Pants</a>
+                <div class="attribute">
+                    1
+                </div>
+                <div class="attribute">
+                    Medium, in black
+                </div>
+            </div>
         </div>
-        
-        
-        
-        
-        
-             
 
+        <div class="row">
+            <div class="parent">
+                <input unchecked type= "checkbox" class="checked"> <a href="https://www.amazon.ca/shirt">Shirt</a>
+                <div class="attribute">
+                  6
+                </div>
+                <div class="attribute">
+                    Small
+                </div>
+            </div>
+        </div>
       </div> 
+        
+        
+        
+        
+ <button type="button" class="submit-button">Submit</button>
+
+        
+        
     </section>  
     
   </body>
@@ -136,7 +149,7 @@
   // Buttons
   const btnMakeList = document.querySelector('#makeList');
   const btnAddItemButton = document.querySelector('.addItemButton');  
-  //const btnSubmitList = document.querySelector(--------SUBMIT BUTTON CLASS/ID HERE------)
+  const btnSubmitList = document.querySelector('.submit-button');
   
   // Input Fields
   const usernameField = document.querySelector('#username_field');
@@ -160,14 +173,14 @@
     name: "Shirt",
     link: "https://www.amazon.ca/shirt",
     quantity: 1,
-    comments: "This is the comment: Medium, in black",
+    comments: "Medium, in black Test Data",
     checked: false,
   }
   const item2 = {
     name: "Pants",
     link: "https://www.amazon.ca/pants",
     quantity: 6,
-    comments: "This is the comment: Small",
+    comments: "Small Test Data",
     checked: false,
   }
   
@@ -215,34 +228,45 @@
     currentAccount = user;
   };
 
+
 	const checkUsername = function() {
-    accounts.forEach(function(acc) {
+    accounts.every(function(acc) {
      if(acc.username ===  usernameField.value && acc.password === Number(passwordField.value)) {
        // If valid username, change current account
 			 currentAccount = acc;
        updateUI();
        window.alert(`Just logged in as ${currentAccount.name}`);
-   		}
-    });
-     if (currentAccount == null) {
+       return true;
+   		} else if (acc.username ===  usernameField.value && acc.password != Number(passwordField.value)) {
+       	window.alert(`Wrong password`);
+        return false;
+      } else {
+        if (currentAccount == null) {
        // If invalid username, call create new account object
-       window.alert('User not found, creating new user');
-       createNewAccount();
-       updateUI();
-   	}
+       		window.alert('User not found, creating new user');
+       		createNewAccount();
+       		updateUI();
+      	}
+      }
+    });
  };
+  
   
   const populateItems = function() {
  		itemListContainer.innerHTML = '';
     currentAccount.listArray.forEach(function(item, i) {
     const html = `
-								<li>
-              <input type= "checkbox"> <a href="${item.link}">${item.name}</a>
-            </li>
-                <ul class="list-content"> 
-                  <li>${item.quantity}</li>
-                  <li>${item.comments}</li>
-                </ul>
+        <div class="row">
+            <div class="parent">
+                <input unchecked type= "checkbox" class="checked"> <a href="${item.url}">${item.name}</a>
+                <div class="attribute">
+                    ${item.quantity}
+                </div>
+                <div class="attribute">
+                    ${item.comments}
+                </div>
+            </div>
+        </div>
 `
     itemListContainer.insertAdjacentHTML("beforeend",html); 
     });
@@ -254,22 +278,22 @@
 	 checkBoxUpdate();    
   }
 
-  var checklist = document.getElementsByClassName("checked");
-  user1.listArray[j].checked = true;
-  
+  //user1.listArray[1].checked = true; 
+    
   const checkBoxUpdate = function() {
     var checklist = document.getElementsByClassName("checked");
-    /*
+    ///*
     for (var j = 0; j < checklist.length; j++) {
-       checklist[j].addEventListener('click', function() {
+       checklist[j].addEventListener('change', function() {
           if (checklist[j].checked) {
-           currentAccount.listArray[j].checked = true;
+            document.write("success")
+           //currentAccount.listArray[j].checked = true;
          } else {
            currentAccount.listArray[j].checked = false;
          }
        });
   	}
-    */
+    //*/
   }
   
   function isCheckedOff(e) {
@@ -287,13 +311,14 @@
     //Clear the current account
     currentAccount = null;
     //loginpage.hidden = true; 
-    listPage.hidden = false;
+    //listPage.hidden = false;
     checkUsername();
   });
   
   
   btnAddItemButton.addEventListener('click', function() {
     const item = new Item(itemNameField.value, itemLinkField.value, Number(itemQuantityField.value), itemCommentsField.value)
+    itemNameField.value = itemLinkField.value = itemQuantityField.value = itemCommentsField.value = ''; 
     currentAccount.listArray.push(item);
     updateUI();
   });
@@ -303,12 +328,14 @@
     //updateUI
   //});
 
- /* 
+ 
   btnSubmitList.addEventListener('click', function() {
-    accounts.push(currentAccount);
+    if(!(accounts.map(acc=> acc.username).includes(currentAccount.username))) {
+    	accounts.push(currentAccount);
+    }
     currentAccount = null;
   });
-  */
+ 
   
   
     
