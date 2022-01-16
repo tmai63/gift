@@ -13,12 +13,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 </head>
 
-
-
 <style>
     h1 {
-        text-decoration: underline;
-        color: #547DEF;
+      color: #547DEF;
+      text-align: right;
+      margin-top: 25px;
+      margin-right: 10px;
+      font-size: 20px;
     }
 
     h2 {
@@ -60,10 +61,19 @@
     .the-list .box {
         width: 5em;
     }
-  
+
+    .the-list {
+      margin-top: 10vh;
+    }
+
+    .login-width {
+      display: inline-block;
+      min-width: 85px;
+    }
+
     .min-width {
       display: inline-block;
-      min-width: 100px;
+      min-width: 110px;
     }
 
 
@@ -100,12 +110,57 @@
     button:hover {
       background: rgba(0, 0, 0, 1)
 }
+
+    .login {
+      margin-top: 20vh;
+      margin-left: 11px;
+    }
+
+  .custom-field {
+    font-size: 14px;
+    position: relative;
+  }
+
+  .custom-field input {
+    border: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #f2f2f2;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 3px;
+    width: 200px;
+    font-size: 12px;
+  }
+
+  .custom-field .placeholder {
+    position: absolute;
+    left: 12px;
+    bottom: 50%;
+    top: 22px;  
+    transform: translateY(-50%);
+    width: calc(100% - 24px);  
+    color: #547DEF;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  
+  .login button {
+    margin-left: 217px;
+    margin-top: 20px;
+  }
+
+  .name-section {
+    margin-bottom: 60px;
+  }
   
 </style>
 
 <body>
   
-   <center>
     <section class="bnr">
       <img src="gift.svg" alt="logo">
       <h1 class="page-heading"> Gift Registry </h1>
@@ -113,43 +168,48 @@
 
     <section class="login">
         <div class="loginpage">
-            <label for="username_field"> User name: </label> 
+          <div class="custom-field">
+            <label for="username_field" class="login-width" class="placeholder">  User name: </label> 
             <input type="text" name="key_field" id="username_field" required>
-            <br>
-            <label for="key_field"> Password:</label> 
+          </div>
+          <div class="custom-field">
+            <label for="key_field" class="login-width" class="placeholder"> Password:</label> 
             <input type="text" name="key_field" id="key_field" required>
-            <p>
+          </div>    
             <button type="button" id="login">Login</button>
         </div>
     </section>
-  </center>
 
     <section class="the-list">
         <div class="list">
 
-          <center><h2 class="list-heading"> Wish List </h2></center>
+          <h2 class="list-heading"> Wish List </h2>
 
-            <h3 class="name-section">
-                <div class="recipient-name">
-                    <label for="fullname"> Recipient Name: </label>
+            <div class="name-section">
+                <div class="custom-field recipient-name">
+                    <label for="fullname" class="min-width"> Recipient Name: </label>
                     <input type="text" name="fullname" class="fullname">
                 </div>
-            </h3>
+                <div class="custom-field recipient-address">
+                    <label for="address" class="min-width"> Address: </label>
+                    <input type="text" name="address" class="address">
+                </div>
+            </div>
 
             <form class="input list list-fields">
-                <div>
+                <div class="custom-field">
                     <label for="list_entry" class="min-width"> Item Name: </label>
                     <input type="text" name="list_entry" id="list_entry">
                 </div>
-                <div>
+                <div class="custom-field">
                     <label for="url" class="min-width"> Link: </label>
                     <input type="url" name="url" class="url">
                 </div>
-                <div>
+                <div class="custom-field">
                     <label for="quantity" class="min-width"> Quantity: </label>
                     <input type="number" name="quantity" class="quantity">
                 </div>
-                <div>
+                <div class="custom-field">
                     <label for="comments" class="min-width"> Comments: </label>
                     <input type="text" name="comments" class="comments">
                 </div>
@@ -163,8 +223,7 @@
               <label> Wish List Items: </label>
                 <div class="row">
                     <div class="parent">
-                        <input unchecked type="checkbox" class="checked"> <a
-                            href="https://www.amazon.ca/pants">Pants</a>
+                        <input unchecked id="0"type="checkbox" class="checked"> <a href="https://www.amazon.ca/pants"  target="_blank">Pants</a>
                         <div class="attribute">
                             1
                         </div>
@@ -176,8 +235,7 @@
 
                 <div class="row">
                     <div class="parent">
-                        <input unchecked type="checkbox" class="checked"> <a
-                            href="https://www.amazon.ca/shirt">Shirt </a>
+                        <input unchecked id="1" type="checkbox" class="checked"> <a href="https://www.amazon.ca/shirt">Shirt </a>
                         <div class="attribute">
                             6
                         </div>
@@ -187,15 +245,14 @@
                     </div>
                 </div>
             </div>
-
-            <p>
+          <div>
             <button type="button" class="submit-button">Submit</button>
+          </div>
     </section>
 
 </body>
 
 </html>
-
 <script>
     // ------------ELEMENTS------------
     // Buttons
@@ -205,6 +262,7 @@
 
     // Input Fields
     const recipientNameField = document.querySelector('.fullname');
+  	const recipientAddress = document.querySelector('.address');
     const usernameField = document.querySelector('#username_field');
     const passwordField = document.querySelector('#key_field');
 
@@ -218,25 +276,28 @@
     const loginPage = document.querySelector('.login');
     const listPage = document.querySelector('.the-list');
     const nameSection = document.querySelector('.name-section');
-    //const nameSection = document.querySelector('.name-section');
 
     const inputListFields = document.querySelector('.list-fields');
     const itemListContainer = document.querySelector('.item-List');
 
 
     // Wishlist Item Object
+  
+  	let checklist = document.getElementsByClassName("checked");
+    let j;
+  
     const item1 = {
         name: "Shirt",
-        link: "https://www.amazon.ca/shirt",
+        link: "https://www.zerodayclothing.com/products/infiniteloop/infiniteloop.php",
         quantity: 1,
-        comments: "Medium, in black Test Data",
+        comments: "Medium in Navy",
         checked: false,
     }
     const item2 = {
-        name: "Pants",
-        link: "https://www.amazon.ca/pants",
+        name: "lululemon pants",
+        link: "https://shop.lululemon.com/p/men-pants/Abc-Jogger/_/prod8530241?color=29283",
         quantity: 6,
-        comments: "Small Test Data",
+        comments: "Small",
         checked: false,
     }
 
@@ -247,6 +308,7 @@
             this.password = password;
             this.listArray = [];
             this.firstTimeLogin = true;
+          	this.address = '';
         }
     }
 
@@ -263,8 +325,8 @@
     const user1 = {
         name: "John Smith",
         username: "jsmith",
-        password: 1111,
-        eventDate: "January 1st, 2022",
+        password: '1111',
+        address: "555 5th Avenue, Vancouver",
         listArray: [item1, item2],
         firstTimeLogin: false,
     };
@@ -272,8 +334,8 @@
     const user2 = {
         name: "Tyler One",
         username: "tone",
-        password: 2222,
-        eventDate: "January 5th, 2022",
+        password: '2222',
+        address: "585 56th Street, Delta",
         listArray: [item1],
         firstTimeLogin: false,
     };
@@ -284,7 +346,7 @@
 
     // ------------FUNCTIONS------------
     const createNewAccount = function () {
-        const user = new User(usernameField.value, Number(passwordField.value));
+        const user = new User(usernameField.value, passwordField.value);
         replaceRecipientNameField();
         currentAccount = user;
         // ####################UNCOMMENT THIS FOR HIDING CODE########################
@@ -302,7 +364,7 @@
 
     const checkUsername = function () {
         accounts.some(function (acc) {
-            if (acc.username === usernameField.value && acc.password === Number(passwordField.value)) {
+            if (acc.username === usernameField.value && acc.password === passwordField.value) {
                 // If valid username, change current account
                 currentAccount = acc;
                 updateUI();
@@ -315,7 +377,7 @@
                 loginPage.hidden = true;
                 listPage.hidden = false;
                 return true;
-            } else if (acc.username === usernameField.value && acc.password != Number(passwordField.value)) {
+            } else if (acc.username === usernameField.value && acc.password != passwordField.value) {
                 window.alert(`Wrong password`);
             } else if (isInvalidLogin(usernameField.value, passwordField.value)) {
                 window.alert('Invalid login information');
@@ -350,9 +412,13 @@
     const replaceRecipientNameField = function () {
         nameSection.innerHTML = '';
             const html = `
-                <div class="recipient-name">
-                    <label for="fullname"> Recipient Name: </label>
+                <div class="custom-field recipient-name">
+                    <label for="fullname" class="min-width"> Recipient Name: </label>
                     <input type="text" name="fullname" class="fullname">
+                </div>
+                <div class="custom-field recipient-address">
+                    <label for="address" class="min-width"> Address: </label>
+                    <input type="text" name="address" class="address">
                 </div>
 `
          nameSection.insertAdjacentHTML("beforeend", html);
@@ -364,7 +430,7 @@
             const html = `
         <div class="row">
             <div class="parent">
-                <input unchecked type= "checkbox" class="checked"> <a href="${item.link}">${item.name}</a>
+                <input ${item.checked ? "checked" : "unchecked"} id="${i}" type= "checkbox" class="checked"> <a href="${item.link}" target="_blank">${item.name}</a>
                 <div class="attribute">
                     ${item.quantity}
                 </div>
@@ -380,8 +446,7 @@
 
     const validateURL = function (link) {
         if (link.indexOf("http://") == 0 || link.indexOf("https://") == 0) {
-            const urlPrefix = "www.";
-            return urlPrefix.concat(link);
+            return link;
         } else if (link.indexOf("http://www.") == 0 || link.indexOf("https://www.") == 0) {
             return link;
         }
@@ -395,33 +460,17 @@
 
     const updateUI = function () {
         //populate the list items by forEach loop over currentUser 
-        populateItems();
-        checkBoxUpdate();
-    }
-
-    //user1.listArray[1].checked = true; 
-
-    const checkBoxUpdate = function () {
-        var checklist = document.getElementsByClassName("checked");
-        ///*
-        for (var j = 0; j < checklist.length; j++) {
+        //populate the list items by forEach loop over currentUser 
+      	populateItems();
+        checklist = document.getElementsByClassName("checked");
+        for (j = 0; j < checklist.length; j++) {
             checklist[j].addEventListener('change', function () {
-                if (checklist[j].checked) {
-                    document.write("success")
-                    //currentAccount.listArray[j].checked = true;
+                if (this.checked) {
+                    currentAccount.listArray[this.id].checked = true;
                 } else {
-                    currentAccount.listArray[j].checked = false;
+                    currentAccount.listArray[this.id].checked = false;
                 }
             });
-        }
-        //*/
-    }
-
-    function isCheckedOff(e) {
-        if (e.target.checked) {
-            currentAccount.listArray[j].checked = true;
-        } else {
-            currentAccount.listArray[j].checked = false;
         }
     }
 
@@ -453,7 +502,9 @@
     btnSubmitList.addEventListener('click', function () {
         if (!(accounts.map(acc => acc.username).includes(currentAccount.username))) {
             const recipientNameField = document.querySelector('.fullname');
+          	const recipientAddress = document.querySelector('.address');
             currentAccount.name = recipientNameField.value;
+          	currentAccount.address = recipientAddress.value;
             currentAccount.firstTimeLogin = false;
             accounts.push(currentAccount);
         }
@@ -466,6 +517,10 @@
         inputListFields.hidden = true;
     });
 
+  /*
+  Every year
+  */
+  
 
 </script>
 
