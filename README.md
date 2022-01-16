@@ -16,4 +16,5 @@ Christmas time is usually a time for gatherings, festivities, and joyfulness
   
   The holiday are a poignant time of year. It's when the most people are thinking of gift giving, and the time of year when families in need could use gifts the most. 
 
-![image](https://user-images.githubusercontent.com/65327591/149658300-b7a51fe2-13d8-4c6c-b74f-19b26a3f5efc.png)
+
+![Screen Shot 2022-01-16 at 3 40 07 AM](https://user-images.githubusercontent.com/65327591/149658337-5a7183fe-4f4c-4dbe-bc93-e3dc19ce6484.png)
