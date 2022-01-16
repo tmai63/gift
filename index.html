@@ -1,266 +1,279 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+            shrink-to-fit=no, viewport-fit=cover">
     <meta name="description" content="Gift Checklist">
     <title>Gift checklist</title>
-  </head>
-  
-  
-  
- <style>
-   h1 {
-   	text-decoration: slateblue underline;
-    color: slateblue;
-   }
-   
-   h2 {
-   	text-decoration: slateblue underline;
-    color: slateblue;
-   }
-   
-   h3 {
-   	font-weight: bold;
-   }
-   
-  body {
-    font-family: "Helvetica Neue", Helvetica, sans-serif;
-  }
-   
+</head>
 
-.the-list .row .parent {
-	display: flex;
-  gap: 30px;
-}
-   
-   
-.the-list .parent {
-	justify-content: flex-start;
-}
-   
-   
-.the-list .box {
-	width: 5em;
-}
-  
-   
 
+
+<style>
+    h1 {
+        text-decoration: slateblue underline;
+        color: slateblue;
+    }
+
+    h2 {
+        text-decoration: slateblue;
+        color: slateblue;
+        font-size: 20px;
+    }
+
+    h3 {
+        font-weight: bold;
+    }
+
+    body {
+        font-family: "Helvetica Neue", Helvetica, sans-serif;
+    }
+
+
+    .the-list .row .parent {
+        display: flex;
+        gap: 30px;
+    }
+
+
+    .the-list .parent {
+        justify-content: flex-start;
+    }
+
+
+    .the-list .box {
+        width: 5em;
+    }
 </style>
 
-  <body>
-    
-    
-    
+<body>
+
+
+
     <section class="bnr">
-      <h1 class="page-heading"> Gift Registry </h1>
-    </section>  
-    
-    <section class="login">
-      <div class="loginpage">
-        <label> User name:</label> <input id="username_field"/>
-        <br>
-        <label> Password:</label> <input id="password_field"/>
-        <br>
-        <button type="button" id="makeList">Make List</button>
-      </div>
+        <h1 class="page-heading"> Gift Registry </h1>
     </section>
-    
+
+    <section class="login">
+        <div class="loginpage">
+            <label> User name:</label> <input required id="username_field" />
+            <br>
+            <label> Password:</label> <input required id="password_field" />
+            <br>
+            <button type="button" id="login">Login</button>
+        </div>
+    </section>
+
     <section class="the-list">
-      <div class="list">
+        <div class="list">
 
-        <h2 class="list-heading"> Wish List </h2>
+            <h2 class="list-heading"> Wish List </h2>
 
-        <h3>
-          <div>
-            <label for="fullname"> Recipient Name: </label>
- 	         	<input type="text" name="fullname" class="fullname">
-          </div>
-        <br>
-        </h3>
-        
-        <form class="input list fields">
-          <div>
-            <label for="list_entry"> Item Name: </label>
- 	         	<input type="text" name="list_entry" id="list_entry">
-          </div>
-          <div>
-            <label for="url"> Link: </label>
- 	         	<input type="url" name="url" class="url">
-          </div>
-          <div>
-            <label for="quantity"> Quantity: </label>
- 	         	<input type="number" name="quantity" class="quantity">
-          </div>
-          <div>
-            <label for="comments"> Comments: </label>
- 	         	<input type="text" name="comments" class="comments">
-          </div>
-          <div>
-          	<button class="addItemButton" type="button">Add</button>
-          </div>
-        </form>
-        
-
-
-    <div class="container item-List">
-        <div class="row">
-            <div class="parent">
-                <input unchecked type= "checkbox" class="checked"> <a href="https://www.amazon.ca/pants">Pants</a>
-                <div class="attribute">
-                    1
+            <h3>
+                <div>
+                    <label for="fullname"> Recipient Name: </label>
+                    <input type="text" name="fullname" class="fullname">
                 </div>
-                <div class="attribute">
-                    Medium, in black
+                <br>
+            </h3>
+
+            <form class="input list list-fields">
+                <div>
+                    <label for="list_entry"> Item Name: </label>
+                    <input type="text" name="list_entry" id="list_entry">
+                </div>
+                <div>
+                    <label for="url"> Link: </label>
+                    <input type="url" name="url" class="url">
+                </div>
+                <div>
+                    <label for="quantity"> Quantity: </label>
+                    <input type="number" name="quantity" class="quantity">
+                </div>
+                <div>
+                    <label for="comments"> Comments: </label>
+                    <input type="text" name="comments" class="comments">
+                </div>
+                <div>
+                    <button class="addItemButton" type="button">Add</button>
+                </div>
+            </form>
+
+
+
+            <div class="container item-List">
+                <div class="row">
+                    <div class="parent">
+                        <input unchecked type="checkbox" class="checked"> <a
+                            href="https://www.amazon.ca/pants">Pants</a>
+                        <div class="attribute">
+                            1
+                        </div>
+                        <div class="attribute">
+                            Medium, in black
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="parent">
+                        <input unchecked type="checkbox" class="checked"> <a href="https://www.amazon.ca/shirt">Shirt
+                        </a>
+                        <div class="attribute">
+                            6
+                        </div>
+                        <div class="attribute">
+                            Small
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="parent">
-                <input unchecked type= "checkbox" class="checked"> <a href="https://www.amazon.ca/shirt">Shirt</a>
-                <div class="attribute">
-                  6
-                </div>
-                <div class="attribute">
-                    Small
-                </div>
-            </div>
-        </div>
-      </div> 
-        
-        
-        
-        
- <button type="button" class="submit-button">Submit</button>
 
-        
-        
-    </section>  
-    
-  </body>
- 
- </html>
-    
+
+
+            <button type="button" class="submit-button">Submit</button>
+    </section>
+
+</body>
+
+</html>
+
 <script>
-  // ------------ELEMENTS------------
-  // Buttons
-  const btnMakeList = document.querySelector('#makeList');
-  const btnAddItemButton = document.querySelector('.addItemButton');  
-  const btnSubmitList = document.querySelector('.submit-button');
-  
-  // Input Fields
-  const usernameField = document.querySelector('#username_field');
-	const passwordField = document.querySelector('#password_field');
-  
-	const itemNameField = document.querySelector('#list_entry');
-	const itemLinkField = document.querySelector('.url');  
-	const itemQuantityField = document.querySelector('.quantity');
-	const itemCommentsField = document.querySelector('.comments');  
-  
-  
-  // Page Sections
-  const loginPage = document.querySelector('.login');
-  const listPage = document.querySelector('.the-list');
-  
-  const itemListContainer = document.querySelector('.item-List');
-  
-  
-  // Wishlist Item Object
-  const item1 = {
-    name: "Shirt",
-    link: "https://www.amazon.ca/shirt",
-    quantity: 1,
-    comments: "Medium, in black Test Data",
-    checked: false,
-  }
-  const item2 = {
-    name: "Pants",
-    link: "https://www.amazon.ca/pants",
-    quantity: 6,
-    comments: "Small Test Data",
-    checked: false,
-  }
-  
-  // User object
-  class User {
-		constructor(username, password) {
-      this.name = username;
-      this.password = password;
-      this.listArray = [];
-  	}
-  }
-  
-  class Item {
-    constructor(itemName, itemLink, itemQuantity, itemComments) {
-      this.name = itemName;
-      this.link = itemLink;
-      this.quantity = itemQuantity;
-      this.comments = itemComments;
-      this.checked = false;
+    // ------------ELEMENTS------------
+    // Buttons
+    const btnlogin = document.querySelector('#login');
+    const btnAddItemButton = document.querySelector('.addItemButton');
+    const btnSubmitList = document.querySelector('.submit-button');
+
+    // Input Fields
+    const recipientNameField = document.querySelector('.fullname');
+    const usernameField = document.querySelector('#username_field');
+    const passwordField = document.querySelector('#password_field');
+
+    const itemNameField = document.querySelector('#list_entry');
+    const itemLinkField = document.querySelector('.url');
+    const itemQuantityField = document.querySelector('.quantity');
+    const itemCommentsField = document.querySelector('.comments');
+
+
+    // Page Sections
+    const loginPage = document.querySelector('.login');
+    const listPage = document.querySelector('.the-list');
+
+    const inputListFields = document.querySelector('.list-fields');
+    const itemListContainer = document.querySelector('.item-List');
+
+
+    // Wishlist Item Object
+    const item1 = {
+        name: "Shirt",
+        link: "https://www.amazon.ca/shirt",
+        quantity: 1,
+        comments: "Medium, in black Test Data",
+        checked: false,
     }
-  }
-    
-	const user1 = {
-    name: "John Smith",
-    username: "jsmith",
-    password: 1111,
-    eventDate: "January 1st, 2022",
-    listArray: [item1, item2],
-  };
-  
-  const user2 = {
-    name: "Tyler One",
-    username: "tone",
-    password: 2222,
-    eventDate: "January 5th, 2022",
-    listArray: [item1],
-  };
-  
-  let accounts = [user1, user2];
-  let currentAccount;
-  
-  // ------------FUNCTIONS------------
-  const createNewAccount = function() {
-    const user = new User(usernameField.value, Number(passwordField.value));
-    currentAccount = user;
-  };
+    const item2 = {
+        name: "Pants",
+        link: "https://www.amazon.ca/pants",
+        quantity: 6,
+        comments: "Small Test Data",
+        checked: false,
+    }
+
+    // User object
+    class User {
+        constructor(username, password) {
+            this.username = username;
+            this.password = password;
+            this.listArray = [];
+            this.firstTimeLogin = true;
+        }
+    }
+
+    class Item {
+        constructor(itemName, itemLink, itemQuantity, itemComments) {
+            this.name = itemName;
+            this.link = itemLink;
+            this.quantity = itemQuantity;
+            this.comments = itemComments;
+            this.checked = false;
+        }
+    }
+
+    const user1 = {
+        name: "John Smith",
+        username: "jsmith",
+        password: 1111,
+        eventDate: "January 1st, 2022",
+        listArray: [item1, item2],
+        firstTimeLogin: false,
+    };
+
+    const user2 = {
+        name: "Tyler One",
+        username: "tone",
+        password: 2222,
+        eventDate: "January 5th, 2022",
+        listArray: [item1],
+        firstTimeLogin: false,
+    };
+
+    let accounts = [user1, user2];
+    let currentAccount;
+
+    // ------------FUNCTIONS------------
+    const createNewAccount = function () {
+        const user = new User(usernameField.value, Number(passwordField.value));
+        currentAccount = user;
+    };
+
+    const checkUsername = function () {
+        accounts.some(function (acc) {
+            if (acc.username === usernameField.value && acc.password === Number(passwordField.value)) {
+                // If valid username, change current account
+                currentAccount = acc;
+                updateUI();
+                if (!(currentAccount.firstTimeLogin)) {
+                    window.alert(`Welcome to ${currentAccount.name}'s wishlist.  \nPlease check off the items you're going to buy for them`);
+                }
+                usernameField.value = passwordField.value = '';
+                // ####################UNCOMMENT THIS FOR HIDING CODE########################
+                loginPage.hidden = true;
+                return true;
+            } else if (acc.username === usernameField.value && acc.password != Number(passwordField.value)) {
+                window.alert(`Wrong password`);
+            } else if (currentAccount === null && !(accounts.map(acc => acc.username).includes(usernameField.value))) {
+                // If invalid username, call create new account object
+                window.alert('User not found, creating a new user');
+                createNewAccount();
+                updateUI();
+                usernameField.value = passwordField.value = '';
+                // ####################UNCOMMENT THIS FOR HIDING CODE########################
+                loginPage.hidden = true;
+            }
+        });
+    };
+
+    const checkFirstTimeLogin = function () {
+        if (currentAccount.firstTimeLogin) {
+            inputListFields.hidden = false;
+        } else {
+            inputListFields.hidden = true;
+        }
+    }
 
 
-	const checkUsername = function() {
-    accounts.every(function(acc) {
-     if(acc.username ===  usernameField.value && acc.password === Number(passwordField.value)) {
-       // If valid username, change current account
-			 currentAccount = acc;
-       updateUI();
-       window.alert(`Just logged in as ${currentAccount.name}`);
-    	 loginPage.hidden = true;       
-       return true;
-   		} else if (acc.username ===  usernameField.value && acc.password != Number(passwordField.value)) {
-       	window.alert(`Wrong password`);
-        return false;
-      } else {
-        if (currentAccount == null) {
-       // If invalid username, call create new account object
-       		window.alert('User not found, creating new user');
-       		createNewAccount();
-       		updateUI();
-          loginPage.hidden = true;
-      	}
-      }
-    });
- };
-  
-  
-  const populateItems = function() {
- 		itemListContainer.innerHTML = '';
-    currentAccount.listArray.forEach(function(item, i) {
-    const html = `
+    const populateItems = function () {
+        itemListContainer.innerHTML = '';
+        currentAccount.listArray.forEach(function (item, i) {
+            const html = `
         <div class="row">
             <div class="parent">
-                <input unchecked type= "checkbox" class="checked"> <a href="${item.url}">${item.name}</a>
+                <input unchecked type= "checkbox" class="checked"> <a href="${item.link}">${item.name}</a>
                 <div class="attribute">
                     ${item.quantity}
                 </div>
@@ -270,75 +283,99 @@
             </div>
         </div>
 `
-    itemListContainer.insertAdjacentHTML("beforeend",html); 
-    });
-  };
-  
-  const updateUI = function() {
-   //populate the list items by forEach loop over currentUser 
-   populateItems();
-	 checkBoxUpdate();    
-  }
+            itemListContainer.insertAdjacentHTML("beforeend", html);
+        });
+    };
 
-  //user1.listArray[1].checked = true; 
-    
-  const checkBoxUpdate = function() {
-    var checklist = document.getElementsByClassName("checked");
-    ///*
-    for (var j = 0; j < checklist.length; j++) {
-       checklist[j].addEventListener('change', function() {
-          if (checklist[j].checked) {
-            document.write("success")
-           //currentAccount.listArray[j].checked = true;
-         } else {
-           currentAccount.listArray[j].checked = false;
-         }
-       });
-  	}
-    //*/
-  }
-  
-  function isCheckedOff(e) {
-    if (e.target.checked) {
-           currentAccount.listArray[j].checked = true;
-         } else {
-           currentAccount.listArray[j].checked = false;
-         }
-  }
-  
-  listPage.hidden = true;
-  
-  // ------------BUTTONS------------
-  btnMakeList.addEventListener('click', function() {
-    //Clear the current account
-    currentAccount = null;
-    listPage.hidden = false;
-    checkUsername();
-  });
-  
-  
-  btnAddItemButton.addEventListener('click', function() {
-    const item = new Item(itemNameField.value, itemLinkField.value, Number(itemQuantityField.value), itemCommentsField.value)
-    itemNameField.value = itemLinkField.value = itemQuantityField.value = itemCommentsField.value = ''; 
-    currentAccount.listArray.push(item);
-    updateUI();
-  });
-  
-  //btnCheckBox.addEventListener('click', function() {
-   //whenever box is checked, change flag in object
-    //updateUI
-  //});
-
- 
-  btnSubmitList.addEventListener('click', function() {
-    if(!(accounts.map(acc=> acc.username).includes(currentAccount.username))) {
-    	accounts.push(currentAccount);
+    const validateURL = function (link) {
+        if (link.indexOf("http://") == 0 || link.indexOf("https://") == 0) {
+            const urlPrefix = "www.";
+            return urlPrefix.concat(link);
+        } else if (link.indexOf("http://www.") == 0 || link.indexOf("https://www.") == 0) {
+            return link;
+        }
+        else {
+            const urlPrefix = "http://www.";
+            return urlPrefix.concat(link);
+        }
     }
-    currentAccount = null;
-  });
- 
-  
-  
-    
- 
+
+    const updateUI = function () {
+        //populate the list items by forEach loop over currentUser 
+        populateItems();
+        checkBoxUpdate();
+    }
+
+    //user1.listArray[1].checked = true; 
+
+    const checkBoxUpdate = function () {
+        var checklist = document.getElementsByClassName("checked");
+        ///*
+        for (var j = 0; j < checklist.length; j++) {
+            checklist[j].addEventListener('change', function () {
+                if (checklist[j].checked) {
+                    document.write("success")
+                    //currentAccount.listArray[j].checked = true;
+                } else {
+                    currentAccount.listArray[j].checked = false;
+                }
+            });
+        }
+        //*/
+    }
+
+    function isCheckedOff(e) {
+        if (e.target.checked) {
+            currentAccount.listArray[j].checked = true;
+        } else {
+            currentAccount.listArray[j].checked = false;
+        }
+    }
+
+    // ####################UNCOMMENT THIS FOR HIDING CODE########################
+    listPage.hidden = true;
+
+    // ------------BUTTONS------------
+    btnlogin.addEventListener('click', function () {
+        //Clear the current account
+        currentAccount = null;
+        // ####################UNCOMMENT THIS FOR HIDING CODE########################
+        listPage.hidden = false;
+        checkUsername();
+        checkFirstTimeLogin();
+    });
+
+
+    btnAddItemButton.addEventListener('click', function () {
+        const item = new Item(itemNameField.value, itemLinkField.value, Number(itemQuantityField.value), itemCommentsField.value)
+        itemNameField.value = itemLinkField.value = itemQuantityField.value = itemCommentsField.value = '';
+        currentAccount.listArray.push(item);
+        updateUI();
+    });
+
+    //btnCheckBox.addEventListener('click', function() {
+    //whenever box is checked, change flag in object
+    //updateUI
+    //});
+
+
+    btnSubmitList.addEventListener('click', function () {
+        if (!(accounts.map(acc => acc.username).includes(currentAccount.username))) {
+            currentAccount.name = recipientNameField.value;
+            currentAccount.firstTimeLogin = false;
+            accounts.push(currentAccount);
+        }
+        currentAccount.firstTimeLogin = false;
+        recipientNameField.value = "";
+        currentAccount = null;
+        // ####################UNCOMMENT THIS FOR HIDING CODE########################
+        loginPage.hidden = false;
+        listPage.hidden = true;
+        inputListFields.hidden = true;
+    });
+
+
+
+
+
 </script>
