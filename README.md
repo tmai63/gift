@@ -1,3 +1,5 @@
+  ## Philosophy 
+  
   Christmas time is usually a time for gatherings, festivities, and joyfulness 
   
   But, every year thousands of familes in need go without the means to spend a cheerful Chirstmas.
