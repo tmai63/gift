@@ -162,8 +162,8 @@
   
   
   // Page Sections
-  const loginpage = document.querySelector('.loginpage');
-  const listPage = document.querySelector('.thelist');
+  const loginPage = document.querySelector('.login');
+  const listPage = document.querySelector('.the-list');
   
   const itemListContainer = document.querySelector('.item-List');
   
@@ -236,6 +236,7 @@
 			 currentAccount = acc;
        updateUI();
        window.alert(`Just logged in as ${currentAccount.name}`);
+    	 loginPage.hidden = true;       
        return true;
    		} else if (acc.username ===  usernameField.value && acc.password != Number(passwordField.value)) {
        	window.alert(`Wrong password`);
@@ -246,6 +247,7 @@
        		window.alert('User not found, creating new user');
        		createNewAccount();
        		updateUI();
+          loginPage.hidden = true;
       	}
       }
     });
@@ -304,14 +306,13 @@
          }
   }
   
-  //listPage.hidden = true;
+  listPage.hidden = true;
   
   // ------------BUTTONS------------
   btnMakeList.addEventListener('click', function() {
     //Clear the current account
     currentAccount = null;
-    //loginpage.hidden = true; 
-    //listPage.hidden = false;
+    listPage.hidden = false;
     checkUsername();
   });
   
