@@ -34,6 +34,11 @@
     body {
         font-family: "Arimo", "Helvetica", sans-serif;
         background-color: #e9e9e6;
+        height: 75%;
+        min-height: 10vh;
+        margin: 0;
+        position: relative;
+        font-weight: 500;
     }
   
     input {
@@ -178,23 +183,33 @@
   color: white;
 	}
   
+  footer {
+        text-align: center;
+        clear: both;
+        position: absolute;
+        bottom: 0;
+        left: 35%;
+        font-family: "Arimo", "Helvetica", sans-serif;
+        font-size: 12px;
+        color: #656565;
+}
+  
 </style>
 
 <body>
   
     <section class="bnr">
       <img src="gift.svg" alt="logo">
-      <h1 class="page-heading"> Gift Registry </h1>
     </section>
 
     <section class="login">
         <div class="loginpage">
           <div class="custom-field">
-            <label for="username_field" class="login-width" class="placeholder">  User name: </label> 
+            <label for="username_field" class="login-width" class="placeholder">  Username: </label> 
             <input type="text" name="key_field" id="username_field" required>
           </div>
           <div class="custom-field">
-            <label for="key_field" class="login-width" class="placeholder"> Password:</label> 
+            <label for="key_field" class="login-width" class="placeholder"> Access Code:</label> 
             <input type="text" name="key_field" id="key_field" required>
           </div>    
             <button type="button" id="login">Login</button>
@@ -241,7 +256,6 @@
 
 
             <div class="container item-List">
-              <label> Wish List Items: </label>
               
               <table id="wishList">
                 <tr>
@@ -256,7 +270,8 @@
             <button type="button" class="submit-button">Submit</button>
           </div>
     </section>
-
+          <footer> Contributors:  <a href="https://www.linkedin.com/in/alethea-kramer/">Alethea Kramer</a>, <a href="https://www.linkedin.com/in/cheung-alvin/">Alvin Cheung</a>, <a href="https://www.linkedin.com/in/limdanielle/">Danielle Lim</a>, <a href="https://www.linkedin.com/in/thomson-mai/">Thomson Mai</a> for nwHacks 2022 </footer>
+      
 </body>
 
 </html>
@@ -294,19 +309,52 @@
     let j;
   
     const item1 = {
-        name: "Shirt",
-        link: "https://www.zerodayclothing.com/products/infiniteloop/infiniteloop.php",
-        quantity: 1,
-        comments: "Medium in Navy",
+        name: "Canned Tuna",
+        link: "https://www.amazon.ca/Clover-Leaf-Solid-Light-Count/dp/B07655N65Y",
+        quantity: 4,
+        comments: "",
         checked: false,
     }
     const item2 = {
-        name: "lululemon pants",
-        link: "https://shop.lululemon.com/p/men-pants/Abc-Jogger/_/prod8530241?color=29283",
-        quantity: 6,
-        comments: "Small",
+        name: "Granola Bars",
+        link: "https://www.costco.ca/madegood-chocolate-chip-organic-granola-bar.product.100400692.html",
+        quantity: 2,
+        comments: "Peanut Free Granola Bars Please",
         checked: false,
     }
+    
+    const item3 = {
+        name: "Lego Motorcycle Set",
+        link: "https://www.lego.com/en-ca/product/bmw-m-1000-rr-42130",
+        quantity: 1,
+        comments: "",
+        checked: false,
+    }
+    
+      const item4 = {
+        name: "Rain Jacket",
+        link: "https://www.thenorthface.com/shop/mens-jackets-vests-rainwear/mens-dryzzle-futurelight-jacket-nf0a4ahm?variationId=4Y3",
+        quantity: 1,
+        comments: "Medium Size in Blue",
+        checked: false,
+    }
+
+      const item5 = {
+        name: "Sweater",
+        link: "https://www.aritzia.com/en/product/montpellier-turtleneck/68394.html?dwvar_68394_color=2198",
+        quantity: 1,
+        comments: "Small Size in Brown",
+        checked: false,
+    }
+      
+      const item6 = {
+        name: "Junior Ice Skates",
+        link: "https://www.sportchek.ca/categories/shop-by-sport/holiday-gift-guide/gifts-for-kids/hockey-sports-gear/product/ccm-super-tacks-9350-junior-hockey-skates-333171852.html#",
+        quantity: 1,
+        comments: "Kids Size 4",
+        checked: false,
+    }
+    
 
     // User object
     class User {
@@ -334,7 +382,7 @@
         username: "jsmith",
         password: '1111',
         address: "555 5th Avenue, Vancouver",
-        listArray: [item1, item2, item2, item2, item2, item2],
+        listArray: [item1, item2, item3, item4, item5, item6],
         firstTimeLogin: false,
     };
 
@@ -538,20 +586,23 @@
   
   Each family has a specific need but sometimes do not get those items fulfilled.
   
-  Thanks to our new app, gift, families can sign up on our site and make a list of what they need this year, be it food, clothing, or toys.
+  Thanks to our new app, Gift, families can sign up on our site and make a list of what they need this year, be it food, clothing, or toys.
   
-  Wonderful doners can then log into the site, see what was on the Smith's list this year, and check off items that they pledge to donate.
+  Individuals who are connected with local charities simply enter a username and an access code to create a new account. So, you'd enter your name and your address at the top.  Your address will only be visible to us so you remain anonymous.  Next, add some items to your wish list.  Finally, submit your list.
+  
+  Wonderful doners can access credentials from their local charitable organization and then log into the site, see what was on the Smith's list this year, and check off items that they pledge to donate.
   
   The holiday are a poignant time of year. It's when the most people are thinking of gift giving, and the time of year when families in need could use gifts the most. 
   
-  Many individuals search for ways that they can embrace the spirit of giving and generousity around the holidays. Our app fills a gap in connecting local families provides a platform that simplifies and formailzes the giving process to connect those in need to those who are in the position to give.
+  Many individuals search for ways that they can embrace the spirit of giving and generousity around the holidays. Our app fills a gap in connecting local families and provides a platform that simplifies and formailzes the giving process to connect those in need to those who are in the position to give.
   
-  Many enbrace the spirit of giving around the holidays, and this could be because research shows that people experience feelings of contentment and satisfaction when they see the impact of their charitable actions. This is why, many search for opportunities to donate, however, studies conclude that giving is really only effective when the giver gets to witness and feel connected to impact of their actions. Our app provides a platform to access direct and specific need in one's community.    
+  Many enbrace the spirit of giving around the holidays, and this could be because research shows that people experience feelings of contentment and satisfaction when they see the impact of their charitable actions. This is why, many search for opportunities to donate, however, studies conclude that giving is really only effective when the giver gets to witness and feel connected to the impact of their actions. Our app provides a platform to access direct and specific need in one's community and witness the impacts. An update to this app would provide an opportunity for donors to log back on and see updates from the family they gave to.         
   
+  For many children in families of need, this could be the difference that ensures the childhood memory of holiday magic. For some teenagers, this could be the school supplies and tools they need to pursue their education. For a young mother, this could be the items they need to take better care of their young children. For a senior lacking family and living on a pension, this could be the reminder that is someone still looking out for them. 
   
-  For many children in families of need, this could be the difference that ensures the childhood memory of holiday magic. For some teenagers, this could be the school supplies and tools they need to pursue their education. For a young mother, this could be the items they need to take better care of their young children. 
+  Gift is the application that catches the missed connections between those that are ready and willing to give, and those that need some holiday magic. The conciousness that we are all connected and our actions have impact on our community has become ever-more apparent. With a tool that promotes direct giving and true impact for either type of user, Gift is an powerful tool to promote community, love, and connection.  
   
-  
+
   */
   
 
