@@ -1,3 +1,5 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,6 +9,8 @@
     <title>Gift checklist</title>
   </head>
   
+  
+  
  <style>
   body {
     font-family: "Helvetica Neue", Helvetica, sans-serif;
@@ -14,21 +18,41 @@
    
   ul {
   	list-style-type: none;
-   } 
+    display: flex;
+  }
+ 
+  .container {
+	  	flex-direction: column;
+  }
    
+  .item-list {
+		 flex-direction: row;
+
+  }
    
- .dropdown-content {
- 	display: block;
- }
+  .parent {
+  	flex-direction: column;
+
+  }
+
+  .list-content {
+  	flex-direction: row;
+  }
+
+  li {
+  	
+  }
    
- .dropdown-list:hover .dropdown-content{
- 	display: block;
- }
+
+  
    
 
 </style>
-  
+
   <body>
+    
+    
+    
     <section class="bnr">
       <h1 class="page-heading"> Gift Registry </h1>
     </section>  
@@ -69,29 +93,36 @@
           </div>
         </form>
         
-        
-        	<ul class="dropdown-list"> 
+
+
+        <div class="container">
+        	<ul class="item-list"> 
             
-          	<li>
-              <input type= "checkbox"> <a href="https://www.amazon.ca/pants">Pants</a>
+          	<li class="parent">
+              <input type= "checkbox" class="checked"> <a href="https://www.amazon.ca/pants">Pants</a>
             </li>
-                <ul class="dropdown-content"> 
+                <ul class="list-content"> 
                   <li>1</li>
                   <li>Medium, in black</li>
                 </ul>
             
-						<li>
-              <input type= "checkbox"> <a href="https://www.amazon.ca/shirt">Shirt</a>
+            
+						<li class="parent">
+              <input type= "checkbox" class="checked"><a href="https://www.amazon.ca/shirt">Shirt</a>
             </li>
-                <ul class="dropdown-content"> 
+                <ul class="list-content"> 
                   <li>6</li>
                   <li>Small</li>
                 </ul>
             
           </ul>
+        </div>
+        
+        
+        
+        
+        
              
-          
-
 
       </div> 
     </section>  
@@ -116,24 +147,27 @@
 	const itemQuantityField = document.querySelector('.quantity');
 	const itemCommentsField = document.querySelector('.comments');  
   
+  
   // Page Sections
   const loginpage = document.querySelector('.loginpage');
   const listPage = document.querySelector('.thelist');
   
+  const itemListContainer = document.querySelector('.item-List');
+  
   
   // Wishlist Item Object
   const item1 = {
-    name: "shirt",
+    name: "Shirt",
     link: "https://www.amazon.ca/shirt",
     quantity: 1,
-    comments: "Medium, in black",
+    comments: "This is the comment: Medium, in black",
     checked: false,
   }
   const item2 = {
     name: "Pants",
     link: "https://www.amazon.ca/pants",
     quantity: 6,
-    comments: "Small",
+    comments: "This is the comment: Small",
     checked: false,
   }
   
@@ -142,15 +176,16 @@
 		constructor(username, password) {
       this.name = username;
       this.password = password;
+      this.listArray = [];
   	}
   }
   
   class Item {
     constructor(itemName, itemLink, itemQuantity, itemComments) {
-      this.itemName = itemName;
-      this.itemLink = itemLink;
-      this.itemQuantity = itemQuantity;
-      this.itemComments = itemComments;
+      this.name = itemName;
+      this.link = itemLink;
+      this.quantity = itemQuantity;
+      this.comments = itemComments;
       this.checked = false;
     }
   }
@@ -185,6 +220,7 @@
      if(acc.username ===  usernameField.value && acc.password === Number(passwordField.value)) {
        // If valid username, change current account
 			 currentAccount = acc;
+       updateUI();
        window.alert(`Just logged in as ${currentAccount.name}`);
    		}
     });
@@ -192,13 +228,62 @@
        // If invalid username, call create new account object
        window.alert('User not found, creating new user');
        createNewAccount();
+       updateUI();
    	}
  };
   
+  const populateItems = function() {
+ 		itemListContainer.innerHTML = '';
+    currentAccount.listArray.forEach(function(item, i) {
+    const html = `
+								<li>
+              <input type= "checkbox"> <a href="${item.link}">${item.name}</a>
+            </li>
+                <ul class="list-content"> 
+                  <li>${item.quantity}</li>
+                  <li>${item.comments}</li>
+                </ul>
+`
+    itemListContainer.insertAdjacentHTML("beforeend",html); 
+    });
+  };
+  
+  const updateUI = function() {
+   //populate the list items by forEach loop over currentUser 
+   populateItems();
+	 checkBoxUpdate();    
+  }
+
+  var checklist = document.getElementsByClassName("checked");
+  user1.listArray[j].checked = true;
+  
+  const checkBoxUpdate = function() {
+    var checklist = document.getElementsByClassName("checked");
+    /*
+    for (var j = 0; j < checklist.length; j++) {
+       checklist[j].addEventListener('click', function() {
+          if (checklist[j].checked) {
+           currentAccount.listArray[j].checked = true;
+         } else {
+           currentAccount.listArray[j].checked = false;
+         }
+       });
+  	}
+    */
+  }
+  
+  function isCheckedOff(e) {
+    if (e.target.checked) {
+           currentAccount.listArray[j].checked = true;
+         } else {
+           currentAccount.listArray[j].checked = false;
+         }
+  }
+  
   //listPage.hidden = true;
   
+  // ------------BUTTONS------------
   btnMakeList.addEventListener('click', function() {
-    console.log("clicked");
     //Clear the current account
     currentAccount = null;
     //loginpage.hidden = true; 
@@ -210,7 +295,13 @@
   btnAddItemButton.addEventListener('click', function() {
     const item = new Item(itemNameField.value, itemLinkField.value, Number(itemQuantityField.value), itemCommentsField.value)
     currentAccount.listArray.push(item);
+    updateUI();
   });
+  
+  //btnCheckBox.addEventListener('click', function() {
+   //whenever box is checked, change flag in object
+    //updateUI
+  //});
 
  /* 
   btnSubmitList.addEventListener('click', function() {
