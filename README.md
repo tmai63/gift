@@ -1,5 +1,3 @@
-https://tmai63.github.io/gift/
-
 ## Mission 
   
 Christmas time is usually a time for gatherings, festivities, and joyfulness 
@@ -18,3 +16,5 @@ Wonderful donors can access credentials from their local charitable organization
   
 The holidays are a poignant time of year. It's when the most people are thinking of gift giving, and the time of year when families in need could use gifts the most. 
 
+Live website: https://tmai63.github.io/gift/
+Demo pitch: https://www.youtube.com/watch?v=VlYRadZORfU&list=LL&index=1
