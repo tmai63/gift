@@ -16,6 +16,6 @@ Wonderful donors can access credentials from their local charitable organization
   
 The holidays are a poignant time of year. It's when the most people are thinking of gift giving, and the time of year when families in need could use gifts the most. 
 
-<b>Live website:</b> https://tmai63.github.io/gift/
+<b>Live website:</b> https://tmai63.github.io/gift/ - Use 'jsmith' for username and '1111' as password.
 
 <b>Demo pitch:</b> https://www.youtube.com/watch?v=VlYRadZORfU&list=LL&index=1
